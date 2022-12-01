@@ -22,18 +22,8 @@ console.log(maxValue(arr));
 
 // Part 02 of Day01 Advent of Code - Top 3 most calories
 const maxValuePart2 = (arr, nb) => {
-    let maxValue = new Array(nb).fill(0);
-    let maxValueIdx = new Array(nb).fill(0);
-    for (let i = 0; i < arr.length; i++){
-        let curValue = arr[i].reduce((pV,cV) => parseInt(pV) + parseInt(cV), 0);
-        for (let j = 0; j < maxValue.length; j++){
-            if (maxValue[j] < curValue){
-                maxValue[j] = curValue;
-                maxValueIdx[j] = j;
-                continue;
-            }
-        }
-    }
-    return maxValue;
+    let newArr = arr.map(p => p.reduce((pV,cV) => parseInt(pV) + parseInt(cV), 0)).sort((a,b) => b - a)
+    return newArr.slice(0, nb).reduce((pV,cV) => pV + cV, 0)
 }
+
 console.log(maxValuePart2(arr, 3));
