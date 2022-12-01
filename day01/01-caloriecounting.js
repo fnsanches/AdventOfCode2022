@@ -27,7 +27,7 @@ const maxValuePart2 = (arr, nb) => {
     for (let i = 0; i < arr.length; i++){
         let curValue = arr[i].reduce((pV,cV) => parseInt(pV) + parseInt(cV), 0);
         for (let j = 0; j < maxValue.length; j++){
-            if (maxValue[j] < curValue && curValue != maxValue[j-1]){
+            if (maxValue[j] < curValue){
                 maxValue[j] = curValue;
                 maxValueIdx[j] = j;
                 continue;
